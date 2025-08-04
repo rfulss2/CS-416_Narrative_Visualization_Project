@@ -119,5 +119,34 @@ export function sceneDivergingBar(state) {
     .attr('font-size', '1rem')
     .attr('font-family', 'Arial, sans-serif')
     .text('Country');
+  
+  const legendData = [
+    {label: 'Revenue', color: '#003399'},
+    {label: 'Expenditure', color: '#ff9900'}
+  ];
+
+    const legend = svg.append('g')
+    .attr('transform', `translate(${margin.left + width_inside + 40}, ${margin.top})`);
+
+  legend.selectAll('rect')
+    .data(legendData)
+    .enter().append('rect')
+    .attr('x', 0)
+    .attr('y', (d,i) => i * 25)
+    .attr('width', 14)
+    .attr('height', 14)
+    .attr('fill', i => i.color);
+
+  // may need to toy around with the y positioning...
+  // i think its fine rn
+  legend.selectAll('text')
+    .data(legendData)
+    .enter().append('text')
+    .attr('x', 20)
+    .attr('y', (d,i) => i * 25 + 11)
+    .attr('alignment-baseline','middle')
+    .attr('font-size','1rem')
+    .attr('font-family','Arial, sans-serif')
+    .text(i => i.label);
 
 }
