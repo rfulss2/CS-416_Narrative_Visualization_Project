@@ -82,7 +82,7 @@ export function sceneDivergingBar(state) {
       .attr('fill', '#003399')
       .on('mouseover', (ev,i) => {
         annotate(svg,
-          `${i.country} Paid: ${d3.format('.1f')(i.paid)}`,
+          `${i.country} Paid: ${d3.format('.1f')(i.paid)} millions`,
           ev.offsetX, ev.offsetY
         );
       });
